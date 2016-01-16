@@ -1,49 +1,55 @@
 <?php
-
+/**
+ * Register sidebars and widgets
+ */
 function roots_widgets_init() {
-  // Register widgetized areas
+  // Sidebars
   register_sidebar(array(
-    'name'          => __('Primary Sidebar', 'roots'),
+    'name'          => __('Primary', 'roots'),
     'id'            => 'sidebar-primary',
-    'before_widget' => '<section id="%1$s" class="widget %2$s"><div class="widget-inner">',
-    'after_widget'  => '</div></section>',
+    'before_widget' => '<section class="widget %1$s %2$s">',
+    'after_widget'  => '</section>',
     'before_title'  => '<h3>',
     'after_title'   => '</h3>',
   ));
 
   register_sidebar(array(
-    'name'          => __('Footer-1', 'roots'),
-    'id'            => 'sidebar-footer1',
-    'before_widget' => '<section id="%1$s" class="widget %2$s"><div class="widget-inner">',
-    'after_widget'  => '</div></section>',
+    'name'          => __('Footer', 'roots'),
+    'id'            => 'sidebar-footer',
+    'before_widget' => '<section class="widget %1$s %2$s">',
+    'after_widget'  => '</section>',
     'before_title'  => '<h3>',
     'after_title'   => '</h3>',
   ));
   
-    register_sidebar(array(
-    'name'          => __('Footer-2', 'roots'),
-    'id'            => 'sidebar-footer2',
-    'before_widget' => '<section id="%1$s" class="widget %2$s"><div class="widget-inner">',
-    'after_widget'  => '</div></section>',
-    'before_title'  => '<h3>',
-    'after_title'   => '</h3>',
-  ));
-  
-     register_sidebar(array(
-    'name'          => __('Footer-3', 'roots'),
-    'id'            => 'sidebar-footer3',
-    'before_widget' => '<section id="%1$s" class="widget %2$s"><div class="widget-inner">',
-    'after_widget'  => '</div></section>',
-    'before_title'  => '<h3>',
-    'after_title'   => '</h3>',
-  ));
+  function bit_widget($name, $id , $description) {
 
-  // Register widgets
+	$args = array(
+		'name'			=> __($name, 'roots'),
+		'id'  			=> $id,
+		'description'	=> $description,
+		'before_widget' => '<section class="widget">',
+		'before_widget' => '</section>',
+		'before_title'  => '',
+    	'after_title'   => '',
+		);
+	register_sidebar( $args );
+}
+bit_widget('Footer Middle','sidebar-footer2','Widget section for the Middle or 2nd section of the Footer');
+bit_widget('Footer Right','sidebar-footer3','Widget section for the Right  or 3rd section of the Footer');
+  
+
+  // Widgets
   register_widget('Roots_Vcard_Widget');
 }
+
+
+
 add_action('widgets_init', 'roots_widgets_init');
 
-// Example vCard widget
+/**
+ * Example vCard widget
+ */
 class Roots_Vcard_Widget extends WP_Widget {
   private $fields = array(
     'title'          => 'Title (optional)',

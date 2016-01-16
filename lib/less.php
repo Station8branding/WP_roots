@@ -1,48 +1,20 @@
 <?php
+require locate_template('/lib/less/Less.php');
 
-/*
- * Innovating on Shoestrap's lib/less.php
- *
- */
-function bitstrappier_phpless( $inputFile, $outputFile ) {
+// Set our options for the less compiler
+$bitstrappier_less_options = array( 
+	'compress'	  	=> true,		// Set to false for development mode, true for production mode
+	'cache_dir'   	=> get_stylesheet_directory().'/assets/css/cache',	// The directory to store the cache. Do not modify.
+	'cache_method'	=> 'php'		// Set the cache method to either false, 'serialize', 'php', 'var_export'
+);
 
-  if ( !class_exists( 'lessc' ) ) {
-    require_once locate_template( '/lib/less_compiler/lessc.inc.php' );
-  }
-  $less = new lessc;
+// The LESS file to compile and cache. 
+$bitstrappier_less_file = array( get_stylesheet_directory().'/assets/less/main.less' => get_bloginfo('template_url') );
 
-  // if ( get_option( 'bitstrappier_minimize_css' ) == 1 ) {
-    $less->setFormatter( "compressed" );
-  // }
+// Define the LESS file to compile, in this case the main.less
+$bitstrappier_css_file_name = Less_Cache::Get( $bitstrappier_less_file, $bitstrappier_less_options );
+Less_Cache::CleanCache();
 
-  // create a new cache object, and compile
-  $cache = $less -> cachedCompile( $inputFile );
+// Store the CSS file name in a URL with its template path
+$bitstrappier_stylesheet_url = get_bloginfo('template_url').'/assets/css/cache/'.$bitstrappier_css_file_name;
 
-  file_put_contents( $outputFile, $cache["compiled"] );
-
-  // the next time we run, write only if it has updated
-  $last_updated = $cache['updated'];
-  $cache = $less -> cachedCompile( $cache );
-  if ( $cache['updated'] > $last_updated ) {
-    file_put_contents( $outputFile, $cache['compiled'] );
-  }
-}
-
-/*
- * Runs the compiler function bitstrappier_phpless
- * for all files that need compiling
- */
-function bitstrappier_phpless_compile() {
-
-  $main_less         = locate_template( 'assets/less/main.less' );
-  $main_css          = locate_template( 'assets/css/main.css' );
-
-  // $responsive_less  = locate_template( 'assets/css/responsive.less' );
-  // $responsive_css   = locate_template( 'assets/css/responsive.css' );
-
-  // if ( get_option( 'bitstrappier_dev_mode' ) == 1 ) {
-    bitstrappier_phpless( $main_less, $main_css );                 // compiling the default styles
-    // bitstrappier_phpless( $responsive_less, $responsive_css );   // compiling responsive styles
-  // }
-}
-add_action('wp', 'bitstrappier_phpless_compile');

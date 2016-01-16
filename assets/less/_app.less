@@ -1,105 +1,118 @@
-// Custom to BitStrappier
-//
-// Global Styles Specific to this App
-//
-// For example:
-// * WP-specific things
-// * perhaps also BG images (particularly when used across all devices)
-//
-// NOTE: 	Media queried less files are set up for various sized viewports
-// 				So use this one for global things
-//
-
-
 /* ==========================================================================
    Base
    ========================================================================== */
 
-body {
-
-}
-
-/* =============================================================================
-   Site Header, Banner, and Nav
-   ========================================================================== */
-
-#banner {
-
-}
-
-// Make space for WP Admin-Bar for logged-in users
-body.admin-bar .navbar-fixed-top {
-	top: 28px;
-}
+body { }
+ 
 
 
 /* ==========================================================================
-   Pages, Posts, and Sidebars
+   Gravity Forms
    ========================================================================== */
 
-#content { // Includes page, post, and sidebar content
-
-	#main { // the content of full-width pages
-					// and the main column in pages with sidebars
-
-		#main-inner { // this div adds white space in BitStrappier
-			@media (min-width: 768px) {
-				margin-right: 24px;
-			}
-
-			p { // normal p's -- p.byline is specified below
-				font-size: 16px;
-				line-height: 1.6;
-				margin: 24px 0;
-			}
-
-			.hentry {
-				header { // contains heading, time, and byline
-					margin-bottom: 20px;
-
-					time, // date posted
-					p.byline { // author's name
-						font-size: 12px;
-						line-height: 1.2;
-						color: #676767;
-						margin: 0;
-						padding: 0;
-					}
-				}
-				.entry-content { // main article content
-
-				}
-				footer { // article footer info
-
-				}
-			} // /.hentry
-
-		} // /#main-inner
-
-	} // /#main
-
-	#sidebar {
-
+.gform_wrapper{
+	input[type="text"], input[type="email"], textarea {
+		padding: 10px;
+		font-size: 1.2em;
+		border: 2px solid #ccc;
+		background: #FAFAFA;
+		transition: all .4s;
+		border-radius: 3px;
 	}
+	select{
 
-} // /#content
+   		font-size: 1.2em;
+   		padding: 10px;
+   		border: 2px solid #CCC;
+	}
+}
+
+input[type="submit"]{
+	background: @brand-primary;
+	color: white;
+	border: none;
+	transition: all .4s;
+	box-shadow: none;
+	padding: 15px 25px;
+}   
+   
+   
+ 
+   
+
+/* ==========================================================================
+   Header
+   ========================================================================== */
+
+.banner { }
+
 
 
 /* ==========================================================================
-   Site Footer
+   Content
    ========================================================================== */
 
-#content-info {
+.content { }
 
-}
+
+
+/* ==========================================================================
+   Primary Content
+   ========================================================================== */
+
+.main { }
+
+/* Gallery Shortcode */
+.gallery-row { padding: 15px 0; }
+
+
+
+/* ==========================================================================
+   Sidebar
+   ========================================================================== */
+
+.sidebar { }
+
+
+
+/* ==========================================================================
+   Posts
+   ========================================================================== */
+
+.hentry header { }
+.hentry time { }
+.hentry .byline { }
+.hentry .entry-content { }
+.hentry footer { }
+
+
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+
+.content-info { }
+
+
 
 /* ==========================================================================
    WordPress Generated Classes
    See: http://codex.wordpress.org/CSS#WordPress_Generated_Classes
    ========================================================================== */
 
-.aligncenter { display: block; margin: 20px auto; }
-.alignleft { float: left; margin: 20px 20px 20px 0;}
-.alignright { float: right; margin: 20px 0 20px 20px;}
-figure.alignnone { margin: 20px; }
+.aligncenter { display: block; margin: 0 auto; }
+.alignleft { float: left; }
+.alignright { float: right; }
+figure.alignnone { margin-left: 0; margin-right: 0; }
 
+
+
+/* ==========================================================================
+   Media Queries
+   ========================================================================== */
+
+@media (min-width: @screen-sm-min) { }
+
+@media (min-width: @screen-md-min) { }
+
+@media (min-width: @screen-lg-min) { }

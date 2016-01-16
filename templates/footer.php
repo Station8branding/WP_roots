@@ -1,18 +1,19 @@
-<footer id="content-info site-footer" class="" role="contentinfo">
-  <div class="container">
-  	<div class="row">
-  		<div class="span4">
-  			  <?php dynamic_sidebar('sidebar-footer1'); ?>
-  		</div>
-  		<div class="span4">
-  			  <?php dynamic_sidebar('sidebar-footer2'); ?>
-  		</div>
-  		<div class="span4">
-  			  <?php dynamic_sidebar('sidebar-footer3'); ?>
-  			  <p>&copy; <?php echo date('Y'); ?> <?php bloginfo('name'); ?></p>
-  		</div>
-  	</div>
-  </div>
+<footer id="content-info" class="" role="contentinfo">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-4">
+				 <?php dynamic_sidebar('sidebar-footer1'); ?>
+				 <p>&copy; <?php echo date('Y'); ?> <?php bloginfo('name'); ?></p>
+			</div>
+			<div class="col-sm-4">
+				 <?php dynamic_sidebar('sidebar-footer2'); ?>
+			</div>
+			<div class="col-sm-4">
+				 <?php dynamic_sidebar('sidebar-footer3'); ?>
+			</div>
+		</div>
+	</div>
+  
 </footer>
 
 <?php if (GOOGLE_ANALYTICS_ID) : ?>

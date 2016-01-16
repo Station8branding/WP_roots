@@ -2,9 +2,7 @@
 /**
  * Roots initial setup and constants
  */
-
 function roots_setup() {
-
   // Make theme available for translation
   load_theme_textdomain('roots', get_template_directory() . '/lang');
 
@@ -22,21 +20,37 @@ function roots_setup() {
   // add_theme_support('post-formats', array('aside', 'gallery', 'link', 'image', 'quote', 'status', 'video', 'audio', 'chat'));
 
   // Tell the TinyMCE editor to use a custom stylesheet
-  add_editor_style('assets/css/editor-style.css');
-
+  add_editor_style('/assets/css/editor-style.css');
 }
-
 add_action('after_setup_theme', 'roots_setup');
 
-// Backwards compatibility for older than PHP 5.3.0
-if (!defined('__DIR__')) { define('__DIR__', dirname(__FILE__)); }
+// GET FEATURED IMAGE
+function ST4_get_featured_image($post_ID) {
+    $post_thumbnail_id = get_post_thumbnail_id($post_ID);
+    if ($post_thumbnail_id) {
+        $post_thumbnail_img = wp_get_attachment_image_src($post_thumbnail_id, 'featured_preview');
+        return $post_thumbnail_img[0];
+    }
+}
+// ADD NEW COLUMN
+function ST4_columns_head($defaults) {
+    $defaults['featured_image'] = 'Featured Image';
+    return $defaults;
+}
+// SHOW THE FEATURED IMAGE
+function ST4_columns_content($column_name, $post_ID) {
+    if ($column_name == 'featured_image') {
+        $post_featured_image = ST4_get_featured_image($post_ID);
+        if ($post_featured_image) {
+            echo '<img src="' . $post_featured_image . '" />';
+        }
+    }
+}
+add_filter('manage_page_posts_columns', 'ST4_columns_head');
+add_action('manage_page_posts_custom_column', 'ST4_columns_content', 10, 2);
 
-// Define helper constants
-$get_theme_name = explode('/themes/', get_template_directory());
 
-define('WP_BASE',                   wp_base_dir());
-define('THEME_NAME',                next($get_theme_name));
-define('RELATIVE_PLUGIN_PATH',      str_replace(site_url() . '/', '', plugins_url()));
-define('FULL_RELATIVE_PLUGIN_PATH', WP_BASE . '/' . RELATIVE_PLUGIN_PATH);
-define('RELATIVE_CONTENT_PATH',     str_replace(site_url() . '/', '', content_url()));
-define('THEME_PATH',                RELATIVE_CONTENT_PATH . '/themes/' . THEME_NAME);
+function admin_styles() {
+	echo '<style type="text/css">#adminmenu li.wp-menu-separator {margin: 0; background: #444;}  .column-featured_image img{ height: 50px;}</style>';
+}
+add_action('admin_head','admin_styles');

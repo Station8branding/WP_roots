@@ -1,0 +1,51 @@
+/* ==========================================================================
+   LESS file for the centered Logo Navbar
+   ========================================================================== */
+ .navbar.center-logo{
+  	height: 100%;
+  	text-align: center;
+  	.main-brand{
+  		margin: 10px auto;
+  		display: inline-block;
+  		float: none;
+  	}
+  	ul.nav{
+  		text-align: justify;
+  		width: 100%;
+  		li{
+  			@media (min-width: @screen-sm-min) {
+  				  	display:inline-block;
+  					float: none;
+  			 }
+
+  			a{
+  				font-size: 1.2em;
+  			}
+  		}
+  		&:after{
+  			content: '';
+  			display: inline-block;
+  			width: 100%;
+  			clear: none;
+  			height: 4px;
+  			background: @brand-primary;
+  		}
+  	}
+  	.icon-bar{
+  		background: #333;
+  	}
+  } 
+  
+   
+   
+   
+   
+   /* ==========================================================================
+   Media Queries
+   ========================================================================== */
+
+@media (min-width: @screen-sm-min) { }
+
+@media (min-width: @screen-md-min) { }
+
+@media (min-width: @screen-lg-min) { }
