@@ -18,6 +18,9 @@ function roots_scripts() {
   // Enqueue the cached css file created in /lib/less.php
   wp_enqueue_style('roots_main', $s8_stylesheet_url, false);
   wp_enqueue_style('lato', 'http://fonts.googleapis.com/css?family=Lato:300,400,700italic' , false);
+  
+  wp_enqueue_style('fontAwesome', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css', false );
+
 
   // jQuery is loaded using the same method from HTML5 Boilerplate:
   // Grab Google CDN's latest jQuery with a protocol relative URL; fallback to local if offline
@@ -45,7 +48,7 @@ function roots_scripts() {
 }
 add_action('wp_enqueue_scripts', 'roots_scripts', 100);
 
-// http://wordpress.stackexchange.com/a/12450
+//http://wordpress.stackexchange.com/a/12450
 function roots_jquery_local_fallback($src, $handle = null) {
   static $add_jquery_fallback = false;
 
@@ -63,6 +66,7 @@ function roots_jquery_local_fallback($src, $handle = null) {
 add_action('wp_head', 'roots_jquery_local_fallback');
 
 function roots_google_analytics() { ?>
+<!--
 <script>
   (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
   function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
@@ -71,8 +75,11 @@ function roots_google_analytics() { ?>
   r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
   ga('create','<?php echo GOOGLE_ANALYTICS_ID; ?>');ga('send','pageview');
 </script>
+-->
 
 <?php }
+/*
 if (GOOGLE_ANALYTICS_ID && !current_user_can('manage_options')) {
   add_action('wp_footer', 'roots_google_analytics', 20);
 }
+*/
