@@ -18,4 +18,4 @@ require_once locate_template('/lib/widgets.php');         // Sidebars and widget
 require_once locate_template('/lib/scripts.php');         // Scripts and stylesheets
 require_once locate_template('/lib/less.php');			  // Less Compiler
 require_once locate_template('/lib/custom.php');          // Custom functions
-require_once locate_template('/lib/bitbrilliant.php');	  //Bitbrilliant Company Theme Functions
+require_once locate_template('/lib/station.php');	  //Bitbrilliant Company Theme Functions

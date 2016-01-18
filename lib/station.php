@@ -1,9 +1,10 @@
 <?php
 /**
- * Bitrbilliant functions
+ * Theme Custom functions
  */
-add_action('admin_init', 'bitbrilliant_shop_options');
-function bitbrilliant_shop_options() {
+// add_action('admin_init', 'shop_options');
+/*
+function shop_options() {
 
 	add_settings_section(
 		'bitbrilliant_options',
@@ -27,9 +28,11 @@ function bitbrilliant_shop_options() {
         'show_comments'
     );
 }
+*/
 /** --------------------------------------------------
 Callbacks
 -------------------------------------------------------**/
+/*
 function bit_comment_callback($args) {
 	 // Note the ID and the name attribute of the element match that of the ID in the call to add_settings_field
     $html = '<input type="checkbox" id="show_comments" name="show_comments" value="1" ' . checked(1, get_option('show_comments'), false) . '/>'; 
@@ -41,31 +44,32 @@ function toggle_comments_callback() {
 		echo '<p>Select which areas of content you wish to change.</p>';
 		
 	}
+*/
 	
 	
 
 /* ------------------------------------------------------------------------ *
- * Bitbrilliant Widget
+ * Station8 Widget Widget
  * ------------------------------------------------------------------------ */
 function built_by_callback($args) {
    echo $args['before_widget'];
    echo $args['before_title'] . 'My Unique Widget' . $after_title;
    echo $args['after_widget'];
    // print some HTML for the widget to display here
-   echo '<div class="bit-footer"><p>Built by <a href="http://www.bitbrilliant.com" target="_blank">BitBrilliant</a></div>';
+   echo '<div class="s8-footer"><p>Crafted by <a href="http://station8branding.com" target="_blank">Station8</a></div>';
 }
 
 wp_register_sidebar_widget(
-    'Bitbrilliant',        // your unique widget id
-    'Built by Bitbrilliant',          // widget name
-    'built_by_callback',  // callback function
+    'Station',        		// your unique widget id
+    'Built by Station8',    // widget name
+    'built_by_callback',  	// callback function
     array(                  // options
         'description' => 'Site Production Team'
     )
 );
 
 /* ------------------------------------------------------------------------ *
- * Bitbrilliant is_tree function
+ * is_tree function
  * Based on http://css-tricks.com/snippets/wordpress/if-page-is-parent-or-child/
  * ------------------------------------------------------------------------ */
 function is_tree($pid) {      // $pid = The ID of the page we're looking for pages underneath
