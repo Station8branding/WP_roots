@@ -16,5 +16,5 @@ $bitstrappier_css_file_name = Less_Cache::Get( $bitstrappier_less_file, $bitstra
 Less_Cache::CleanCache();
 
 // Store the CSS file name in a URL with its template path
-$bitstrappier_stylesheet_url = get_bloginfo('template_url').'/assets/css/cache/'.$bitstrappier_css_file_name;
+$s8_stylesheet_url = get_bloginfo('template_url').'/assets/css/cache/'.$bitstrappier_css_file_name;
 

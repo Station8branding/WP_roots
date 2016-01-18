@@ -12,11 +12,11 @@
  */
 function roots_scripts() {
 
-  // Find the $bitstrappier_stylesheet_url stored in /lib/less.php
-  global $bitstrappier_stylesheet_url;
+  // Find the $s8_stylesheet_url stored in /lib/less.php
+  global $s8_stylesheet_url;
 
   // Enqueue the cached css file created in /lib/less.php
-  wp_enqueue_style('roots_main', $bitstrappier_stylesheet_url, false);
+  wp_enqueue_style('roots_main', $s8_stylesheet_url, false);
   wp_enqueue_style('lato', 'http://fonts.googleapis.com/css?family=Lato:300,400,700italic' , false);
 
   // jQuery is loaded using the same method from HTML5 Boilerplate:
@@ -34,14 +34,14 @@ function roots_scripts() {
 
   wp_register_script('modernizr', get_template_directory_uri() . '/assets/js/vendor/modernizr-2.7.0.min.js', array(), null, false);
   wp_register_script('roots_scripts', get_template_directory_uri() . '/assets/js/scripts.min.js', array(), '0fc6af96786d8f267c8686338a34cd38', true);
-  wp_register_script('bitstrappier_plugins', get_template_directory_uri() . '/assets/js/plugins.js', array() , null,  true);
-  wp_register_script('bitstrappier_main', get_template_directory_uri() . '/assets/js/_main.js', array() , null,  true);
+  wp_register_script('s8_plugins', get_template_directory_uri() . '/assets/js/plugins.js', array() , null,  true);
+  wp_register_script('s8_main', get_template_directory_uri() . '/assets/js/_main.js', array() , null,  true);
   
   wp_enqueue_script('modernizr');
   wp_enqueue_script('jquery');
   wp_enqueue_script('roots_scripts');
-  wp_enqueue_script('bitstrappier_plugins');
-  wp_enqueue_script('bitstrappier_main');
+  wp_enqueue_script('s8_plugins');
+  wp_enqueue_script('s8_main');
 }
 add_action('wp_enqueue_scripts', 'roots_scripts', 100);
 
