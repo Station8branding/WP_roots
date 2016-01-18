@@ -22,7 +22,7 @@ function roots_widgets_init() {
     'after_title'   => '</h3>',
   ));
   
-  function bit_widget($name, $id , $description) {
+  function s8_widget($name, $id , $description) {
 
 	$args = array(
 		'name'			=> __($name, 'roots'),
@@ -35,8 +35,8 @@ function roots_widgets_init() {
 		);
 	register_sidebar( $args );
 }
-bit_widget('Footer Middle','sidebar-footer2','Widget section for the Middle or 2nd section of the Footer');
-bit_widget('Footer Right','sidebar-footer3','Widget section for the Right  or 3rd section of the Footer');
+s8_widget('Footer Middle','sidebar-footer2','Widget section for the Middle or 2nd section of the Footer');
+s8_widget('Footer Right','sidebar-footer3','Widget section for the Right  or 3rd section of the Footer');
   
 
   // Widgets
