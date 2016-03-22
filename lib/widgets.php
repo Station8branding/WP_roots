@@ -29,9 +29,9 @@ function roots_widgets_init() {
 		'id'  			=> $id,
 		'description'	=> $description,
 		'before_widget' => '<section class="widget">',
-		'before_widget' => '</section>',
-		'before_title'  => '',
-    	'after_title'   => '',
+		'after_title' => '</section>',
+    'before_title'  => '<h3>',
+    'after_title'   => '</h3>',
 		);
 	register_sidebar( $args );
 }
