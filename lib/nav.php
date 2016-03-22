@@ -14,16 +14,17 @@ class Roots_Nav_Walker extends Walker_Nav_Menu {
   function check_current($classes) {
     return preg_match('/(current[-_])|active|dropdown/', $classes);
   }
-
+    //Starting Level
   function start_lvl(&$output, $depth = 0, $args = array()) {
     $output .= "\n<ul class=\"dropdown-menu\">\n";
   }
-
+  //Starting Elements
   function start_el(&$output, $item, $depth = 0, $args = array(), $id = 0) {
     $item_html = '';
     parent::start_el($item_html, $item, $depth, $args);
 
     if ($item->is_dropdown && ($depth === 0)) {
+      //If the item is a dropdown, replace the regular A with the bootstrap classes
       $item_html = str_replace('<a', '<a class="dropdown-toggle" data-toggle="dropdown" data-target="#"', $item_html);
       $item_html = str_replace('</a>', ' <b class="caret"></b></a>', $item_html);
     }
