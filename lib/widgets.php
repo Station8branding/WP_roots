@@ -65,7 +65,7 @@ class Roots_Vcard_Widget extends WP_Widget {
     $widget_ops = array('classname' => 'widget_roots_vcard', 'description' => __('Use this widget to add a vCard', 'roots'));
 
     parent::WP_Widget('widget_roots_vcard', __('Roots: vCard', 'roots'), $widget_ops);
-    parent::alt_option_name = 'widget_roots_vcard';
+    $this->alt_option_name = 'widget_roots_vcard';
 
     add_action('save_post', array(&$this, 'flush_widget_cache'));
     add_action('deleted_post', array(&$this, 'flush_widget_cache'));
