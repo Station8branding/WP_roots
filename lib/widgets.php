@@ -28,10 +28,10 @@ function roots_widgets_init() {
 		'name'			=> __($name, 'roots'),
 		'id'  			=> $id,
 		'description'	=> $description,
-		'before_widget' => '<section class="widget">',
-		'after_title' => '</section>',
-    'before_title'  => '<h3>',
-    'after_title'   => '</h3>',
+		'before_widget' => '<section class="widget widget-'. $id .'">',
+		'after_widget' => '</section>',
+		'before_title'  => '<h3>',
+		'after_title'   => '</h3>',
 		);
 	register_sidebar( $args );
 }
@@ -64,7 +64,7 @@ class Roots_Vcard_Widget extends WP_Widget {
   function __construct() {
     $widget_ops = array('classname' => 'widget_roots_vcard', 'description' => __('Use this widget to add a vCard', 'roots'));
 
-    parent::WP_Widget('widget_roots_vcard', __('Roots: vCard', 'roots'), $widget_ops);
+    parent::__construct('widget_roots_vcard', __('Roots: vCard', 'roots'), $widget_ops);
     $this->alt_option_name = 'widget_roots_vcard';
 
     add_action('save_post', array(&$this, 'flush_widget_cache'));
