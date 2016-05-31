@@ -20,6 +20,14 @@ This theme uses a base.php to wrap around every other template. The Base file is
 
 Other Components
 ----------------
-_FontAwesome_ is an online icon library. This theme currently uses v4.5.0. You can update the url that pulls it in /lib/scrips.php
-_isTree_ is a function found in /lib/station.php that takes the ID number of a page and returns true or false if you are on that page, a child of that page, or a grandchild of that page. This is mainly used in displaying sidebars or menus.
+__FontAwesome__ is an online icon library. This theme currently uses v4.5.0. You can update the url that pulls it in /lib/scrips.php
+
+__isTree__ is a function found in /lib/station.php that takes the ID number of a page and returns true or false if you are on that page, a child of that page, or a grandchild of that page. This is mainly used in displaying sidebars or menus.
+
 I have also created a widget that displays on the admin dashboard that pulls a feed from the station8branding.com RSS feed.
+
+
+
+
+
+This theme was originally created by Collin Berg.
